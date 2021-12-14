@@ -330,6 +330,7 @@ def randobj(*args, **kwargs):
     if len(args) == 1 and len(kwargs) == 0 and callable(args[0]):
         # Called without arguments
         obj = _randobj({})
+        args[0].original_module = args[0].__module__
         return obj(args[0])
     else:
         obj = _randobj(kwargs)
